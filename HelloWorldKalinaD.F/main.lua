@@ -34,15 +34,3 @@ textObjectSignature:setTextColor(0255255, 255/255, 255/255)
 
 -- print to the command terminal
 print ("This is awesome!!!")
-
-
-----------------------------------------------------------------------------------
--- random things 
-
--- make a line variable
-local line
-
--- make it into a line
-line = display.newText("______________", 512, 320, nil, 100)
-
--- turn it black
