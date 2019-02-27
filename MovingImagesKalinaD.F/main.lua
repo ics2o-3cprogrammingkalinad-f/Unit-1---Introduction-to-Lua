@@ -31,6 +31,9 @@ beetleship.alpha = 0
 beetleship.x = 0
 beetleship.y = display.contentHeight/3
 
+-- set the original size of beetleship
+beetleship.xScale = 1
+beetleship.yScale = 1
 -- Function: MoveShip
 -- Input: this funcion accepts an event listner
 -- Output: none
@@ -39,7 +42,10 @@ local function MoveShip(event)
 	-- add the scroll speed to the x-value of the ship
 	beetleship.x = beetleship.x + scrollSpeed
 	-- change the tansparency of the ship everytime it moves so that it fades in
-	beetleship.alpha = beetleship.alpha + 0.01
+	beetleship.alpha = beetleship.alpha + 0.007
+	-- make it so that beetleship shrinks every time it moves
+	beetleship.xScale = beetleship.xScale - 0.001
+	beetleship.yScale = beetleship.yScale - 0.001
 end
 
 -- MoveShip will be called over and over again
@@ -48,7 +54,7 @@ Runtime:addEventListener("enterFrame", MoveShip)
 -- character #2 (star)
 
 -- make a different scrollSpeed
-scrollSpeed = 5
+scrollSpeedStar = 5
 
 -- character image with width and height
 local star = display.newImageRect("Images/star.png", 200, 200)
@@ -60,16 +66,26 @@ star.alpha = 1
 star.x = 1028
 star.y = display.contentHeight/1.5
 
+-- set the original size of star
+star.xScale = 1
+star.yScale = 1
+
 -- Function: MoveStar
 -- Input: this funtion accepts an event listener
 -- Output: none
 -- Description: This function adds the scroll speed to the value of the ship
 local function MoveStar(event)
-	-- add the scill sped to the x-value of star
-	star.x = star.x - scrollSpeed
-	-- change the transparency of the shipe everytime it moves so that it fades out
-	star.alpha = star.alpha - 0.01
+	-- add the scroll speed to the x-value of star
+	star.x = star.x - scrollSpeedStar
+	-- change the transparency of the ship everytime it moves so that it fades out
+	star.alpha = star.alpha - 0.002
+	-- make it so that star grows everytime it moves
+	star.xScale = star.xScale + 0.005
+	star.yScale = star.yScale + 0.005
 end
+
+-- make star rotate/spin
+transition.to(star, {x=-250, rotation = star.rotation-900,time=2000,} )
 
 -- MoveStar will be called over and over again
 Runtime:addEventListener("enterFrame", MoveStar)
