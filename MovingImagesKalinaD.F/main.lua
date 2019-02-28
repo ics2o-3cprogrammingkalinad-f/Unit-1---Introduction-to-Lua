@@ -11,8 +11,6 @@
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
--- status bar command is not working
-
 -- global variable
 scrollSpeed = 3
 

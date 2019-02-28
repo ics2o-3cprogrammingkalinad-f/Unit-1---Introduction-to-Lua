@@ -1,0 +1,7 @@
+-----------------------------------------------------------------------------------------
+-- Title: WhackAMole
+-- Name: Kalina Dunne Farrell
+-- Course: ICS2O
+-- This program places a random object on the screen. If the user clicks on it in time,
+-- the score increases by 1.
+-----------------------------------------------------------------------------------------
