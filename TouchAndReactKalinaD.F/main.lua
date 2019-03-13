@@ -4,8 +4,8 @@
 -- Course: ICS2O
 -- This program does something when I click on the button
 -----------------------------------------------------------------------------------------
--- set the backgound color
-display.setDefault("background", 0, 1, 0)
+-- set the background color
+display.setDefault("background", 122/255, 213/255, 234/255)
 
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
@@ -26,27 +26,48 @@ redButton.isVisible = false
 local textObject = display.newText("Clicked!", 0, 0, nil, 50)
 textObject.x = display.contentWidth/2
 textObject.y = display.contentHeight/3
-textObject:setTextColor(0, 0, 0)
+textObject:setTextColor(1, 1, 1)
 textObject.isVisible = false
+
+-- create textObjectSignature, set its position and color
+local textObjectSignature = display.newText("By: Kalina D.F.", 0, 0, nil, 50)
+textObjectSignature.x = 170
+textObjectSignature.y = 35
+textObjectSignature:setTextColor (0, 0, 0)
+
+-- create lightImage, set  its position and make it invisible
+local lightImage = display.newImageRect("Images/lightBeam.png", 200, 200)
+lightImage.x = 920
+lightImage.y = 100
+lightImage.isVisible = false
 
 -- Function: BlueButtonListener
 -- Input: touch listener
 -- Output: none
--- Description: when blueButton is clicked, it will make the text appear with the red 
--- button, and make the blue button disappear
+-- Description: when blueButton is clicked, it will make redButton, textObject
+-- and lightImage appear, change the color of textObjectSignature and the background
 local function BlueButtonListener(touch)
 	if (touch.phase == "began") then
 		blueButton.isVisible = false
 		redButton.isVisible = true
 		textObject.isVisible = true
+		lightImage.isVisible = true
+		textObjectSignature:setTextColor(1, 1, 1)
+		display.setDefault("background", 0, 0, 0)
 	end
+end
 
-	if (touch.phase == "ended") then
+local function RedButtonListener(touch)
+	if (touch.phase == "began") then
 		blueButton.isVisible = true
 		redButton.isVisible = false
 		textObject.isVisible = false
+		lightImage.isVisible = false
+		textObjectSignature:setTextColor(0, 0, 0)
+		display.setDefault("background", 122/255, 213/255, 234/255)
 	end
 end
 
 -- add the respective listeners to each object
 blueButton:addEventListener("touch", BlueButtonListener)
+redButton:addEventListener("touch", RedButtonListener)
