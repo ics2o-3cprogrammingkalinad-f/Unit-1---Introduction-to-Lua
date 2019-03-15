@@ -41,6 +41,9 @@ lightImage.x = 920
 lightImage.y = 100
 lightImage.isVisible = false
 
+-- create cartoonPop
+local cartoonPop = audio.loadStream("Sounds/cartoonPop.mp3")
+
 -- Function: BlueButtonListener
 -- Input: touch listener
 -- Output: none
@@ -54,6 +57,7 @@ local function BlueButtonListener(touch)
 		lightImage.isVisible = true
 		textObjectSignature:setTextColor(1, 1, 1)
 		display.setDefault("background", 0, 0, 0)
+		audio.play(cartoonPop)
 	end
 end
 
