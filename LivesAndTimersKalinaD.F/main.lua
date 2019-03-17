@@ -114,8 +114,10 @@ local function UpdateLives()
 		timer.cancel(countDownTimer)
 		questionObject.isVisible = false
 		numericField.isVisible = false
-
+		clockText.isVisible = false
 		youLose.isVisible = true
+		audio.play(youLoseSound)
+
 
 	end
 end
@@ -258,6 +260,9 @@ youLose = display.newImageRect("Images/youLose.png", 500, 500)
 youLose.x = display.contentWidth/2
 youLose.y = display.contentHeight/2
 youLose.isVisible = false
+
+-- create the losing sound
+youLoseSound = audio.loadStream("Sounds/WompWompWomp.mp3")
 -----------------------------------------------------------------------------------------
 -- function calls
 
