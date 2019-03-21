@@ -27,12 +27,24 @@ local questionCount
 local question = 0
 local operation = math.random(1, 3)
 -----------------------------------------------------------------------------------------
+-- sounds
+
+-- correct sound
+local correctSound = audio.loadStream("Sounds/clapping.mp3")
+
+-- incorrect sound
+local incorrectSound = audio.loadStream("Sounds/beep.mp3")
+-----------------------------------------------------------------------------------------
 -- local functions
 
 local function AskQuestion()
-	-- generate two random numbers between a max. and a min. number
+	-- generate two random numbers between a max. and a min. number and repeat until 
+	--randomNumber1 is greater than randomNumber2
+	repeat
 	randomNumber1 = math.random(10, 20)
 	randomNumber2 = math.random(10, 20)
+	until (randomNumber1 >= randomNumber2)
+	while (randomNumber1 < randomNumber2)
 
 	-- re-set operation to another random number
 	operation = math.random(1, 4)
@@ -45,16 +57,9 @@ local function AskQuestion()
 	questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
 
 	elseif (operation == 2) then
-		
-		if (randomNumber2 > randomNumber1) then
-			AskQuestion()
-
-		else
-		correctAnswer = randomNumber1 - randomNumber2
 
 		-- create question in text object
 		questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
-		end
 
 	elseif (operation == 3) then
 
@@ -65,8 +70,9 @@ local function AskQuestion()
 
 	else
 
-		correctAnswer = randomNumber1 / randomNumber2
+		correctAnswer = randomNumber1 / randomNumber2 * 100 
 		math.round(correctAnswer)
+		correctAnswer = correctAnswer / 100
 
 		-- create question in text object
 		questionObject.text = randomNumber1 .." / ".. randomNumber2 .." = "
@@ -109,10 +115,12 @@ local function NumericFieldListener(event)
 			incorrectObject.isVisible = false
 			IncreasePointCount()
 			timer.performWithDelay(2000, HideCorrect)
+			audio.play(correctSound)
 
 		else
 			correctObject.isVisible = false
 			incorrectObject.isVisible = true
+			audio.play(incorrectSound)
 
 		end
 	end
@@ -136,7 +144,7 @@ incorrectObject.isVisible = false
 
 -- create numericField
 numericField = native.newTextField(560, 380, 150, 100)
-numericField.inputType = "number" 
+numericField.inputType = "default"
 
 -- add the event listener for the numeric field
 numericField:addEventListener("userInput", NumericFieldListener)

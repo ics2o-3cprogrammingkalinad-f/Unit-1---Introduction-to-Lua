@@ -41,8 +41,13 @@ lightImage.x = 920
 lightImage.y = 100
 lightImage.isVisible = false
 
--- create cartoonPop
-local cartoonPop = audio.loadStream("Sounds/cartoonPop.mp3")
+-- create nighttime
+local nighttime = audio.loadStream("Sounds/nighttime.mp3")
+local nighttimeChannel
+
+-- create daytime
+local daytime = audio.loadStream("Sounds/daytime.mp3")
+local daytimeChannel
 
 -- Function: BlueButtonListener
 -- Input: touch listener
@@ -57,7 +62,7 @@ local function BlueButtonListener(touch)
 		lightImage.isVisible = true
 		textObjectSignature:setTextColor(1, 1, 1)
 		display.setDefault("background", 0, 0, 0)
-		audio.play(cartoonPop)
+		nighttimeChannel = audio.play(nighttime)
 	end
 end
 
@@ -69,6 +74,7 @@ local function RedButtonListener(touch)
 		lightImage.isVisible = false
 		textObjectSignature:setTextColor(0, 0, 0)
 		display.setDefault("background", 122/255, 213/255, 234/255)
+		daytimeChannel = audio.play(daytime)
 	end
 end
 

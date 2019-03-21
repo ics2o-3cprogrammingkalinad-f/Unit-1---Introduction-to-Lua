@@ -17,6 +17,14 @@ scrollSpeed = 3
 -- background image with width and height
 local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536)
 -----------------------------------------------------------------------------------------
+-- sounds
+
+-- make the beetleship sound
+local beetleshipSound = audio.loadStream("Sounds/beeps.mp3")
+
+-- make the star sound
+local starSound = audio.loadStream("Sounds/blip.mp3")
+-----------------------------------------------------------------------------------------
 -- chracter #1 (beetleship)
 
 -- character image with width and height
@@ -37,6 +45,7 @@ beetleship.yScale = 1
 -- Output: none
 -- Description: This function adds the scroll speed to the x-value of the ship
 local function MoveShip(event)
+	
 	-- add the scroll speed to the x-value of the ship
 	beetleship.x = beetleship.x + scrollSpeed
 	-- change the tansparency of the ship everytime it moves so that it fades in
@@ -44,10 +53,14 @@ local function MoveShip(event)
 	-- make it so that beetleship shrinks every time it moves
 	beetleship.xScale = beetleship.xScale - 0.001
 	beetleship.yScale = beetleship.yScale - 0.001
+
 end
 
 -- MoveShip will be called over and over again
 Runtime:addEventListener("enterFrame", MoveShip)
+
+-- play a sound effect
+audio.play(beetleshipSound)
 -----------------------------------------------------------------------------------------
 -- character #2 (star)
 
@@ -73,6 +86,7 @@ star.yScale = 1
 -- Output: none
 -- Description: This function adds the scroll speed to the value of the ship
 local function MoveStar(event)
+	
 	-- add the scroll speed to the x-value of star
 	star.x = star.x - scrollSpeedStar
 	-- change the transparency of the ship everytime it moves so that it fades out
@@ -80,6 +94,7 @@ local function MoveStar(event)
 	-- make it so that star grows everytime it moves
 	star.xScale = star.xScale + 0.005
 	star.yScale = star.yScale + 0.005
+	
 end
 
 -- make star rotate/spin
@@ -87,3 +102,6 @@ transition.to(star, {x=-250, rotation = star.rotation-900,time=2000,} )
 
 -- MoveStar will be called over and over again
 Runtime:addEventListener("enterFrame", MoveStar)
+
+-- play the sound effect
+audio.play(starSound)

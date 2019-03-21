@@ -31,8 +31,8 @@ local mole = display.newImage("Images/walnut.png", 0, 0)
 	mole.x = display.contentCenterX
 	mole.y = display.contentCenterY
 
-	-- scale up mole
-	mole:scale(1.5, 1.5)
+	-- scale down to two thirds of its original size
+	mole:scale(0.6, 0.6)
 
 	-- make mole invisible
 	mole.isVisible = false
