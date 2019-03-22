@@ -3,7 +3,8 @@
 -- Name: Kalina Dunne Farrell
 -- Course: ICS2O
 -- This program displays a math question and asks the user to answer in a numeric 
--- textfield terminal.
+-- textfield terminal. If the timer runs out, you lose a life. If you get the question
+-- wrong, you lose a life.
 -----------------------------------------------------------------------------------------
 -- setup
 
