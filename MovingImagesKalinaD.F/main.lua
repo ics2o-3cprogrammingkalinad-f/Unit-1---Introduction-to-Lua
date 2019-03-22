@@ -48,7 +48,7 @@ local function MoveShip(event)
 	
 	-- add the scroll speed to the x-value of the ship
 	beetleship.x = beetleship.x + scrollSpeed
-	-- change the tansparency of the ship everytime it moves so that it fades in
+	-- change the transparency of the ship everytime it moves so that it fades in
 	beetleship.alpha = beetleship.alpha + 0.007
 	-- make it so that beetleship shrinks every time it moves
 	beetleship.xScale = beetleship.xScale - 0.001

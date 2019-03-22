@@ -84,7 +84,7 @@ myCircle:setFillColor(127/255, 0, 1)
 myCircle:setStrokeColor(0, 0, 0)
 
 -- calculate the area
-areaOfCircle = radiusOfCircle * radiusOfCircle * PI
+areaOfCircle = PI * (radiusOfCircle * radiusOfCircle)
 
 -- write the area on the screen (under the circle)
 areaTextCircle = display.newText("The area of this circle with a radius of \n" ..
