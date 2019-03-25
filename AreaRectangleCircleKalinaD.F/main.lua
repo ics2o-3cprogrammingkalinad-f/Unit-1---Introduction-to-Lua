@@ -65,7 +65,7 @@ local areaTextCircle
 local myCircle
 local radiusOfCircle = 100
 local areaOfCircle
-local PI = 3.14
+local PI = 3.1415965
 
 -- draw the circle on the left underneath the writing from the rectangle
 myCircle = display.newCircle(0, 0, radiusOfCircle)
