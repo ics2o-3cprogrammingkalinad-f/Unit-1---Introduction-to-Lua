@@ -130,8 +130,11 @@ local function fourthball()
 	-- creating fourth ball
 	local ball4 = display.newImage("Images/ball.png", 0, 0)
 
+	-- scale ball4 to be a quartr of its original size
+	ball4:scale(.25, .25)
+
 	-- add to physics
-	physics.addBody(ball4, {density=0.1, friction=0.1, bounce=0.5, radius=25})
+	physics.addBody(ball4, {density=0.7, friction=0.7, bounce=0.7, radius=6.25})
 
 end
 ------------------------------
