@@ -5,7 +5,8 @@
 -- This program places a random object on the screen. If the user clicks on it in time,
 -- the score increases by 1.
 -----------------------------------------------------------------------------------------
--- setup
+-- SETUP
+-----------------------------------------------------------------------------------------
 
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
@@ -22,7 +23,8 @@ local bkg = display.newRect(0, 0, display.contentWidth, display.contentHeight)
 	bkg.x = 0
 	bkg.y = 0
 -----------------------------------------------------------------------------------------
--- objects
+-- OBJECTS
+-----------------------------------------------------------------------------------------
 
 -- creating mole
 local mole = display.newImage("Images/walnut.png", 0, 0)
@@ -55,7 +57,8 @@ local bonk = audio.loadStream("Sounds/bonk.mp3")
 -- create the background music
 local bkgMusic = audio.loadStream("Sounds/bkgMusic.mp3")
 -----------------------------------------------------------------------------------------
--- functions
+-- FUNCTIONS
+-----------------------------------------------------------------------------------------
 
 -- this function makes the mole appear in a random (x, y) position on the screen then 
 -- calls the hide function
@@ -114,11 +117,14 @@ function Whacked(event)
 	end
 end
 -----------------------------------------------------------------------------------------
--- event listeners
+-- EVENT LISTENERS
+-----------------------------------------------------------------------------------------
 
 -- I add the event listener to the mole so that if the mole is touched, the Whacked function
 -- is called
 mole:addEventListener("touch", Whacked)
 -----------------------------------------------------------------------------------------
--- start the game
+-- CALL FUNCTION(S)
+-----------------------------------------------------------------------------------------
+
 GameStart()
