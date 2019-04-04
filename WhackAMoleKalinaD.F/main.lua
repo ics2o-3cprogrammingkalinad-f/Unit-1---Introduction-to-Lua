@@ -45,7 +45,7 @@ local scoreCount = 0
 local scoreText = display.newText("Score: " .. scoreCount, 0, 0, nil, 50)
 
 	-- set its x and y positions
-	scoreText.x = 100
+	scoreText.x = display.contentCenterX
 	scoreText.y = 30
 
 	-- set its color
@@ -110,6 +110,7 @@ function Whacked(event)
 
 	-- if touch phase just started
 	if (event.phase == "began") then
+		mole.isVisible = false
 		scoreCount = scoreCount + 1
 		scoreText.text = "Score: " .. scoreCount
 		audio.play(bonk)
