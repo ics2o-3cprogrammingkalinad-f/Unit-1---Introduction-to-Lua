@@ -117,7 +117,6 @@ local function UpdateLives()
 		youLose.isVisible = true
 		audio.play(youLoseSound)
 
-
 	end
 end
 
